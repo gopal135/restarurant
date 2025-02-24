@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Homepage</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            text-align: center;
+        }
+        .navbar {
+            padding: 15px;
+            background: linear-gradient(90deg, #67a5e8, darkblue);
+        }
+        .navbar a {
+            color: black;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 600;
+        }
+        .navbar a:hover {
+            color: white;
+        }
+        .menu-card {
+            width: 60%;
+            margin: 20px auto;
+            border-radius: 10px;
+            background-color: blue;
+            padding: 20px;
+        }
+        .menu-card.menu {
+            background-color: #e6f7ff;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: darkcyan;
+            color: white;
+        }
+        tr:hover {
+            background-color: skyblue;
+        }
+        ol {
+            list-style-type: upper-roman;
+            padding-left: 20px;
+        }
+        .restaurant-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+        .add-items-btn {
+            display: inline-block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: darkblue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .add-items-btn:hover {
+            background-color: #67a5e8;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        footer a {
+            color: #67a5e8;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .button-63 {
+            align-items: center;
+            background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
+            border: 0;
+            border-radius: 8px;
+            box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+            box-sizing: border-box;
+            color: #FFFFFF;
+            display: flex;
+            font-family: Phantomsans, sans-serif;
+            font-size: 14px;
+            justify-content: center;
+            line-height: 1em;
+            max-width: 100%;
+            min-width: 80px;
+            padding: 10px 15px;
+            text-decoration: none;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+        .button-63:active,
+        .button-63:hover {
+            outline: 0;
+        }
+        @media (min-width: 768px) {
+            .button-63 {
+                font-size: 16px;
+                min-width: 100px;
+            }
+        }
+
+        .selected-items {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .selected-items h3 {
+            margin-bottom: 10px;
+            color: darkcyan;
+        }
+        .delete-btn {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .delete-btn:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <a href="#home">Home</a>
+        <a href="#menu">Menu</a>
+        <a href="#contact">Contact Us</a>
+    </div>
+
+
+    <div class="menu-card menu">
+        <h2>Menu</h2>
+        <table>
+            <tr>
+                <th colspan="4" class="restaurant-name">Gourmet Delights</th>
+            </tr>
+            <tr>
+                <th>Dish Name</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Select</th>
+            </tr>
+            <tr>
+                <td>Shrimp Tacos</td>
+                <td>$14</td>
+                <td>Fresh shrimp with avocado, lime, and cilantro in a soft tortilla.</td>
+                <td><button class="button-63" onclick="addItem('Shrimp Tacos', '$14')">Add</button></td>
+            </tr>
+            <tr>
+                <td>Teriyaki Salmon</td>
+                <td>$18</td>
+                <td>Grilled salmon glazed with teriyaki sauce, served with steamed rice.</td>
+                <td><button class="button-63" onclick="addItem('Teriyaki Salmon', '$18')">Add</button></td>
+            </tr>
+            <tr>
+                <td>Pad Thai</td>
+                <td>$13</td>
+                <td>Stir-fried rice noodles with chicken, shrimp, peanuts, and lime.</td>
+                <td><button class="button-63" onclick="addItem('Pad Thai', '$13')">Add</button></td>
+            </tr>
+            <tr>
+                <td>Lamb Gyro</td>
+                <td>$16</td>
+                <td>Tender lamb slices wrapped in pita bread with tzatziki sauce and veggies.</td>
+                <td><button class="button-63" onclick="addItem('Lamb Gyro', '$16')">Add</button></td>
+            </tr>
+            <tr>
+                <td>BBQ Ribs</td>
+                <td>$22</td>
+                <td>Slow-cooked ribs with a smoky BBQ glaze, served with coleslaw and fries.</td>
+                <td><button class="button-63" onclick="addItem('BBQ Ribs', '$22')">Add</button></td>
+            </tr>
+            <tr>
+                <td colspan="4" style="text-align: center; font-style: italic;">Thank you for dining with Gourmet Delights!</td>
+            </tr>
+        </table>
+    </div>
+
+
+    <div class="selected-items">
+        <h3>Selected Items</h3>
+        <table id="selected-items-table">
+            <tr>
+                <th>Dish Name</th>
+                <th>Price</th>
+                <th>delete</th>
+            </tr>
+        </table>
+    </div>
+
+
+    <footer>
+        <p>&copy; 2023 Gourmet Delights. All rights reserved.</p>
+        <p>
+            Contact us: 
+            <a href="mailto:info@gourmetdelights.com">info@gourmetdelights.com</a> | 
+            <a href="tel:+1234567890">+1 (234) 567-890</a>
+        </p>
+        <p>
+            Follow us on: 
+            <a href="https://facebook.com" target="_blank">Facebook</a> | 
+            <a href="https://instagram.com" target="_blank">Instagram</a> | 
+            <a href="https://twitter.com" target="_blank">Twitter</a>
+        </p>
+    </footer>
+
+ 
+    <script>
+  
+        function addItem(name, price) {
+            const table = document.getElementById("selected-items-table");
+
+            const rows = Array.from(table.rows).slice(1); 
+            const existingItems = rows.map(row => row.cells[0].textContent);
+            if (existingItems.includes(name)) {
+                alert(`${name} is already in your selection.`);
+                return;
+            }
+
+
+            const newRow = table.insertRow();
+
+
+            const cell1 = newRow.insertCell(0);
+            cell1.textContent = name;
+
+            const cell2 = newRow.insertCell(1);
+            cell2.textContent = price;
+
+
+            const cell3 = newRow.insertCell(2);
+            const deleteButton = document.createElement("button");
+            deleteButton.textContent = "Delete";
+            deleteButton.className = "delete-btn";
+            deleteButton.onclick = () => removeItem(newRow);
+            cell3.appendChild(deleteButton);
+        }
+
+
+        function removeItem(row) {
+            const table = document.getElementById("selected-items-table");
+            table.deleteRow(row.rowIndex);
+        }
+    </script>
+</body>
+</html>
